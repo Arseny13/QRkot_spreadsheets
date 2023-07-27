@@ -131,7 +131,6 @@ dmypy.json
 # .idea
 .idea
 *.db
-*Db.*
 
 
 .vscode/
