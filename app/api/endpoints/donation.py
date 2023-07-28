@@ -17,7 +17,7 @@ router = APIRouter()
 @router.get(
     '/',
     response_model=list[DonationDB],
-    dependencies=[Depends(current_superuser)],
+    dependencies=(Depends(current_superuser),),
     response_model_exclude={'close_date', }
 )
 async def get_all_meeting_rooms(
@@ -33,7 +33,7 @@ async def get_all_meeting_rooms(
     response_model=DonationDB,
     response_model_exclude_none=True,
     response_model_exclude={'invested_amount', 'fully_invested'},
-    dependencies=[Depends(current_user)],
+    dependencies=(Depends(current_user),),
 )
 async def create_new_donation(
         donation: DonationCreate,
@@ -51,7 +51,7 @@ async def create_new_donation(
 @router.get(
     '/my',
     response_model=list[DonationDB],
-    dependencies=[Depends(current_user)],
+    dependencies=(Depends(current_user),),
     response_model_exclude={
         'user_id', 'close_date',
         'fully_invested', 'invested_amount'

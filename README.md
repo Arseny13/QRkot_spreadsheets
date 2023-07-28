@@ -13,24 +13,12 @@ https://github.com/Arseny13
 Добавьте в приложение QRKot возможность формирования отчёта в гугл-таблице. В таблице должны быть закрытые проекты, отсортированные по скорости сбора средств — от тех, что закрылись быстрее всего, до тех, что долго собирали нужную сумму.
 
 
-<h2>Используемые технологии</h2>
-
-- Python 3.9
-- FastAPI v.0.78.0
-- SQLite
-- SQLAlchemy
-- Alembic
-- Google API
-
 <h2>Как использовать</h2>
 
 Клонировать репозиторий и перейти в него в командной строке:
 
 ```
 git clone git@github.com:Arseny13/QRkot_spreadsheets.git
-```
-
-```
 cd QRkot_spreadsheets
 ```
 
@@ -55,10 +43,7 @@ python3 -m venv venv
 Установить зависимости из файла requirements.txt:
 
 ```
-python3 -m pip install --upgrade pip
-```
-
-```
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 Заполнить файл .env по аналогу .env.example
@@ -76,3 +61,12 @@ alembic upgrade head
 ```
 uvicorn app.main:app --reload
 ```
+
+<h2>Используемые технологии</h2>
+
+- Python 3.9
+- FastAPI v.0.78.0
+- SQLite
+- SQLAlchemy
+- Alembic
+- Google API

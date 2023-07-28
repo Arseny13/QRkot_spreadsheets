@@ -6,11 +6,12 @@ from app.core.config import settings
 
 
 class PreBase:
+    """Класс для бд c единстеным полем id."""
+    id = Column(Integer, primary_key=True)
+
     @declared_attr
     def __tablename__(cls):
         return cls.__name__.lower()
-
-    id = Column(Integer, primary_key=True)
 
 
 Base = declarative_base(cls=PreBase)

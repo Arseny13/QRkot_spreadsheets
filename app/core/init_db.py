@@ -20,16 +20,18 @@ async def create_user(
     """Корутина, создающая юзера с переданным email и паролем.
     Возможно создание суперюзера при передаче аргумента is_superuser=True."""
     try:
-        async with get_async_session_context() as session:
-            async with get_user_db_context(session) as user_db:
-                async with get_user_manager_context(user_db) as user_manager:
-                    await user_manager.create(
-                        UserCreate(
-                            email=email,
-                            password=password,
-                            is_superuser=is_superuser
-                        )
-                    )
+        async with (
+            get_async_session_context() as session,
+            get_user_db_context(session) as user_db,
+            get_user_manager_context(user_db) as user_manager,
+        ):
+            await user_manager.create(
+                UserCreate(
+                    email=email,
+                    password=password,
+                    is_superuser=is_superuser
+                )
+            )
     except UserAlreadyExists:
         logger.warning("Пользователь уже существует.")
 
